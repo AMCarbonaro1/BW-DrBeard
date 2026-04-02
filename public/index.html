@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Beard Barbershop | Allen Park, MI</title>
+  <meta name="description" content="Dr. Beard Barbershop — Allen Park's top-rated barbershop. Expert fades, beard grooming, kids cuts & more. Walk-ins welcome. 17029 Ecorse Rd, Allen Park, MI 48101.">
+  <meta name="keywords" content="barbershop, barber, Allen Park, Michigan, beard, fade, haircut, kids cuts, beard grooming, 48101, Ecorse Rd">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dr. Beard Barbershop | Allen Park, MI">
+  <meta property="og:description" content="Allen Park's top-rated barbershop. Expert fades, beard grooming, kids cuts & more. Walk-ins welcome.">
+  <meta property="og:image" content="photos/outside.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💈</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#0a0a0a',
+            darker: '#050505',
+            card: '#1a1a1a',
+            accent: '#10b981',
+            'accent-light': '#34d399',
+            'accent-dark': '#065f46',
+          },
+          fontFamily: {
+            heading: ['Bebas Neue', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="booking.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "name": "Dr. Beard Barbershop",
+    "image": "photos/outside.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "17029 Ecorse Rd",
+      "addressLocality": "Allen Park",
+      "addressRegion": "MI",
+      "postalCode": "48101",
+      "addressCountry": "US"
+    },
+    "telephone": "+17347996171",
+    "url": "",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "111"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "20:00"
+      }
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+</head>
+
+<body class="bg-dark text-white font-body overflow-x-hidden">
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="hero-bg absolute inset-0">
+      <img src="photos/outside.jpg" alt="Dr. Beard Barbershop storefront on Ecorse Rd, Allen Park" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-dark"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div class="animate-on-scroll">
+        <p class="text-accent font-heading text-xl md:text-2xl tracking-[0.3em] mb-2 uppercase">Allen Park, Michigan</p>
+        <h1 class="font-heading text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] leading-none tracking-tight hero-title">
+          DR. BEARD
+        </h1>
+        <p class="text-gray-300 text-lg md:text-xl mt-4 mb-2 tracking-wide">Barbershop</p>
+        <div class="flex items-center justify-center gap-2 mb-8">
+          <div class="flex text-accent text-lg">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <span class="text-white font-bold">4.9</span>
+          <span class="text-gray-400 text-sm">&middot; 111 Google reviews</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-on-scroll">
+        <button onclick="BookingModal.open()" class="bg-accent hover:bg-accent-light text-black font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2 w-full sm:w-auto justify-center cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Book Now
+        </button>
+        <div class="border-2 border-white/30 text-white font-semibold text-lg px-8 py-4 rounded-full flex items-center gap-2">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          Walk-ins Welcome
+        </div>
+      </div>
+    </div>
+
+    <a href="#services" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 scroll-indicator">
+      <svg class="w-8 h-8 text-white/50 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </a>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="py-20 md:py-28 bg-dark">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16 animate-on-scroll">
+        <p class="text-accent font-heading text-lg tracking-[0.3em] mb-2">WHAT WE DO</p>
+        <h2 class="font-heading text-5xl md:text-7xl">SERVICES</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <!-- Haircuts & Fades -->
+        <div class="service-card group animate-on-scroll">
+          <div class="bg-card border border-white/5 rounded-2xl p-6 md:p-8 text-center hover:border-accent/30 transition-all duration-300 h-full">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/></svg>
+            </div>
+            <h3 class="font-heading text-2xl md:text-3xl text-white mb-2">Haircuts & Fades</h3>
+            <p class="text-gray-400 text-sm">Skin fades, taper fades, low fades, mid fades — precision cuts tailored to your style.</p>
+          </div>
+        </div>
+
+        <!-- Beard Grooming -->
+        <div class="service-card group animate-on-scroll">
+          <div class="bg-card border border-white/5 rounded-2xl p-6 md:p-8 text-center hover:border-accent/30 transition-all duration-300 h-full">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <svg class="w-7 h-7 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6 2 10.5c0 2.5 1.5 5.5 4 7V22l3-2 3 2 3-2 3 2v-4.5c2.5-1.5 4-4.5 4-7C22 6 17.52 2 12 2zm-2 14h4v1h-4v-1zm6-3H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1z"/></svg>
+            </div>
+            <h3 class="font-heading text-2xl md:text-3xl text-white mb-2">Beard Grooming</h3>
+            <p class="text-gray-400 text-sm">Expert shaping, trimming, and detailing. Ali is known as one of the best beard artists downriver.</p>
+          </div>
+        </div>
+
+        <!-- Kids Cuts -->
+        <div class="service-card group animate-on-scroll">
+          <div class="bg-card border border-white/5 rounded-2xl p-6 md:p-8 text-center hover:border-accent/30 transition-all duration-300 h-full">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-heading text-2xl md:text-3xl text-white mb-2">Kids Cuts</h3>
+            <p class="text-gray-400 text-sm">Patient, kid-friendly barbers who make haircuts fun. All hair types and textures welcome.</p>
+          </div>
+        </div>
+
+        <!-- Line-ups -->
+        <div class="service-card group animate-on-scroll">
+          <div class="bg-card border border-white/5 rounded-2xl p-6 md:p-8 text-center hover:border-accent/30 transition-all duration-300 h-full">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            </div>
+            <h3 class="font-heading text-2xl md:text-3xl text-white mb-2">Line-ups & Edge-ups</h3>
+            <p class="text-gray-400 text-sm">Crisp hairlines and clean edges — keep your look tight between cuts.</p>
+          </div>
+        </div>
+
+        <!-- Hot Towel Shaves -->
+        <div class="service-card group animate-on-scroll">
+          <div class="bg-card border border-white/5 rounded-2xl p-6 md:p-8 text-center hover:border-accent/30 transition-all duration-300 h-full">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+            </div>
+            <h3 class="font-heading text-2xl md:text-3xl text-white mb-2">Hot Towel Shaves</h3>
+            <p class="text-gray-400 text-sm">Classic straight razor shave with hot towel treatment. The full barbershop experience.</p>
+          </div>
+        </div>
+
+        <!-- All Hair Types -->
+        <div class="service-card group animate-on-scroll">
+          <div class="bg-card border border-white/5 rounded-2xl p-6 md:p-8 text-center hover:border-accent/30 transition-all duration-300 h-full">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </div>
+            <h3 class="font-heading text-2xl md:text-3xl text-white mb-2">All Hair Types</h3>
+            <p class="text-gray-400 text-sm">Skilled with every texture — straight, curly, coily, wavy. Ali tailors every cut to your hair.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== THE WORK (Gallery from photos + Instagram Feed) ========== -->
+  <section id="gallery" class="py-20 md:py-28 bg-darker">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16 animate-on-scroll">
+        <p class="text-accent font-heading text-lg tracking-[0.3em] mb-2">SEE THE RESULTS</p>
+        <h2 class="font-heading text-5xl md:text-7xl">FRESH CUTS</h2>
+      </div>
+
+      <!-- Photo gallery -->
+      <div class="grid grid-cols-3 gap-3 md:gap-4 mb-12">
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/cut4.jpg" alt="Low skin fade with buzz cut" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/cut7.jpg" alt="Classic pompadour with hard part and shaped beard" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/cut5.jpg" alt="Curly top with mid fade on young boy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/cut8.jpg" alt="Buzz cut with high skin fade and shaped beard" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/client1.jpg" alt="Barber with smiling young client" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/cut9.jpg" alt="Curly top with mid-high skin fade" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/cut6.jpg" alt="Textured crop with high fade on young boy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/client2.jpg" alt="Barber cutting child's hair" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+        <div class="gallery-item animate-on-scroll cursor-pointer overflow-hidden rounded-xl aspect-[3/4]" onclick="openLightbox(this)">
+          <img src="photos/client3.jpg" alt="Fresh textured haircut result" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Instagram Feed Embed -->
+      <div class="text-center animate-on-scroll">
+        <div class="ig-feed-container rounded-2xl bg-card border border-white/5 p-6 md:p-8">
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#f09433] via-[#e6683c] to-[#bc1888] mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">Follow <a href="https://www.instagram.com/dr.beard.barber.shop/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light font-semibold">@dr.beard.barber.shop</a> for our latest work</p>
+            <!-- 
+              =============================================
+              INSTAGRAM FEED WIDGET PLACEHOLDER
+              =============================================
+              To add a live Instagram feed, sign up for one of these free services:
+              
+              Option 1: SnapWidget (free) — https://snapwidget.com
+                1. Go to snapwidget.com, enter @dr.beard.barber.shop
+                2. Pick grid layout, 6-9 photos, dark theme
+                3. Copy the embed code and paste it below
+              
+              Option 2: Elfsight (free tier) — https://elfsight.com/instagram-feed-widget/
+                1. Create account, build widget for @dr.beard.barber.shop
+                2. Copy the <script> embed code and paste it below
+              
+              Option 3: Curator.io (free tier) — https://curator.io
+                1. Connect Instagram, pick grid layout
+                2. Copy embed code below
+              
+              Replace this comment block with the embed code.
+              =============================================
+            -->
+            <a href="https://www.instagram.com/dr.beard.barber.shop/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 mt-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              View All on Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 hidden" onclick="closeLightbox(event)">
+    <button class="absolute top-4 right-4 text-white/70 hover:text-white z-50 p-2" onclick="closeLightbox(event)" aria-label="Close lightbox">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <button class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-2 z-50" onclick="prevImage(event)" aria-label="Previous image">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-2 z-50" onclick="nextImage(event)" aria-label="Next image">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-[90vw] object-contain rounded-lg">
+  </div>
+
+  <!-- ========== THE SHOP ========== -->
+  <section id="shop" class="py-20 md:py-28 bg-dark">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16 animate-on-scroll">
+        <p class="text-accent font-heading text-lg tracking-[0.3em] mb-2">COME THROUGH</p>
+        <h2 class="font-heading text-5xl md:text-7xl">THE SHOP</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+        <div class="space-y-4 animate-on-scroll">
+          <div class="overflow-hidden rounded-2xl">
+            <img src="photos/inside.jpg" alt="Dr. Beard Barbershop interior — modern design, honeycomb LED lights, barber chairs" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+          </div>
+          <div class="overflow-hidden rounded-2xl">
+            <img src="photos/unnamed.jpg" alt="Dr. Beard Barbershop interior — waiting area, sports jerseys, geometric wall panels" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+          </div>
+        </div>
+
+        <div class="animate-on-scroll">
+          <h3 class="font-heading text-3xl md:text-4xl mb-6 text-accent">More Than a Barbershop</h3>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Welcome to Dr. Beard, Allen Park's top-rated destination for expert grooming. Located on Ecorse Rd, our modern shop combines clean design with a welcoming atmosphere — honeycomb LED lights, sports memorabilia, and a vibe that keeps people coming back.
+          </p>
+          <p class="text-gray-300 text-lg leading-relaxed mb-8">
+            Ali and the team specialize in every hair type and texture. Whether it's a precision fade, a detailed beard sculpt, or your kid's first real haircut — you're in expert hands. Walk-ins always welcome, 7 days a week.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-card border border-white/5 rounded-xl p-4 text-center">
+              <div class="text-accent text-2xl mb-1">
+                <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <p class="text-sm text-gray-400">Open 7 Days</p>
+            </div>
+            <div class="bg-card border border-white/5 rounded-xl p-4 text-center">
+              <div class="text-accent text-2xl mb-1">
+                <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <p class="text-sm text-gray-400">Good for Kids</p>
+            </div>
+            <div class="bg-card border border-white/5 rounded-xl p-4 text-center">
+              <div class="text-accent text-2xl mb-1">
+                <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              </div>
+              <p class="text-sm text-gray-400">Modern Design</p>
+            </div>
+            <div class="bg-card border border-white/5 rounded-xl p-4 text-center">
+              <div class="text-accent text-2xl mb-1">
+                <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <p class="text-sm text-gray-400">Walk-ins Welcome</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REVIEWS ========== -->
+  <section id="reviews" class="py-20 md:py-28 bg-darker overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-4 animate-on-scroll">
+        <p class="text-accent font-heading text-lg tracking-[0.3em] mb-2">REAL TALK</p>
+        <h2 class="font-heading text-5xl md:text-7xl">REVIEWS</h2>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 mb-12 animate-on-scroll">
+        <div class="flex text-accent text-xl">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <span class="text-white font-bold text-lg">4.9</span>
+        <span class="text-gray-400">on Google &middot; 111 reviews</span>
+      </div>
+
+      <div class="reviews-track">
+        <div class="reviews-slider flex gap-4 md:gap-6">
+          <!-- Review 1 — Daniel Belcher (autistic child story) -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"I have a non verbal autistic child who hates haircuts!! This gentleman cut his hair and he didn't shed one tear. The cut was clean, precise and had my boy lined up nicely!"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold text-sm text-black">D</div>
+              <div>
+                <p class="font-semibold text-sm">Daniel Belcher</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 — Brian Jackson -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"Ali is hands down one of the best beard artists I've seen. This guy truly appreciates and respects the beard. If you're like me and value your beard, go see Ali."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">B</div>
+              <div>
+                <p class="font-semibold text-sm">Brian Jackson</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 — Matthew (wedding mullet) -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"I was rocking a mullet and had a wedding coming up. I showed Ali a picture and he hit a home run! I don't trust a lot of people with my beard, but Ali hooked it up!"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold text-sm text-black">M</div>
+              <div>
+                <p class="font-semibold text-sm">Matthew</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4 — jorshua lopez (travels for work) -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"I travel for work and only trust the best beard groomers — Ali is the top choice. Originally from Florida, I specifically came to Dr. Beard Barbershop just to get styled by Ali."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">J</div>
+              <div>
+                <p class="font-semibold text-sm">Jorshua Lopez</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5 — Glenn Wilcox (drives from Bloomfield Hills) -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"We travel all the way from Bloomfield Hills. Ali is a great guy. He makes you feel very welcomed, very personable and always gives great haircuts for my son and I."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold text-sm text-black">G</div>
+              <div>
+                <p class="font-semibold text-sm">Glenn Wilcox</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 6 — Sara Sarah (kid's curly hair) -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"Ali is an incredible barber. He's been cutting my son's 3B/3C hair for almost a year, and every single time, we leave 100% satisfied. He's skilled with all textures and hair types."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">S</div>
+              <div>
+                <p class="font-semibold text-sm">Sara Sarah</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 7 — Ricardo Cardz Hernandez -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"I have tried almost every barber shop in the AP area and further. Ali is better than most. Clean, and modern barber shop with a positive atmosphere. My new spot."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold text-sm text-black">R</div>
+              <div>
+                <p class="font-semibold text-sm">Ricardo C. Hernandez</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 8 — Mark Al -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"Amazing experience with Ali. From the moment I sat in his chair, he really listened to my concerns and took the time to understand my hair type. He gave me great advice tailored to my hair."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">M</div>
+              <div>
+                <p class="font-semibold text-sm">Mark Al</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 9 — Javier G.O. Patrón -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"Ali did an excellent job! Extremely professional, went above and beyond to make me look my best. My wife loved the final result too. The place feels brand new, clean and elegant."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold text-sm text-black">J</div>
+              <div>
+                <p class="font-semibold text-sm">Javier G.O. Patrón</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 10 — TheDoenizzle -->
+          <div class="review-card flex-shrink-0 w-[300px] md:w-[360px] bg-card border border-white/5 rounded-2xl p-6">
+            <div class="flex text-accent text-sm mb-3">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"First time at Dr Beard and I'm definitely coming back. Ali took his time, listened to what I wanted, and absolutely nailed the beard. Straight razor work was on point."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm">T</div>
+              <div>
+                <p class="font-semibold text-sm">TheDoenizzle</p>
+                <p class="text-gray-500 text-xs">Google Review</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSTAGRAM CTA ========== -->
+  <section id="instagram" class="py-20 md:py-28 bg-dark relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent-dark/10"></div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 animate-on-scroll">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-[#f09433] via-[#e6683c] to-[#bc1888] mb-6">
+        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+      <h2 class="font-heading text-5xl md:text-7xl mb-4">FOLLOW THE CUTS</h2>
+      <p class="text-gray-300 text-lg mb-8">Stay up to date with our latest work, shop updates, and behind-the-chair content.</p>
+      <a href="https://www.instagram.com/dr.beard.barber.shop/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @dr.beard.barber.shop
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER / CONTACT ========== -->
+  <footer id="contact" class="py-20 md:py-28 bg-card border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16">
+        <!-- Map -->
+        <div class="animate-on-scroll">
+          <div class="rounded-2xl overflow-hidden h-[300px] md:h-[400px]">
+            <iframe
+              src="https://www.google.com/maps?q=17029+Ecorse+Rd,+Allen+Park,+MI+48101&output=embed"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Dr. Beard Barbershop location on Google Maps"></iframe>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="animate-on-scroll">
+          <h2 class="font-heading text-4xl md:text-5xl mb-8">
+            <span class="text-accent">FIND</span> US
+          </h2>
+
+          <div class="space-y-6">
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-white">Address</p>
+                <p class="text-gray-400">17029 Ecorse Rd<br>Allen Park, MI 48101</p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-white">Phone</p>
+                <a href="tel:+17347996171" class="text-accent hover:text-accent-light transition-colors text-lg">(734) 799-6171</a>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-white">Hours</p>
+                <p class="text-gray-400">
+                  Mon – Sun: 9:00 AM – 8:00 PM<br>
+                  <span class="text-accent text-sm">Open 7 days a week</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-white">Instagram</p>
+                <a href="https://www.instagram.com/dr.beard.barber.shop/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">@dr.beard.barber.shop</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="font-heading text-2xl text-white">DR. BEARD</span>
+          <span class="text-accent font-heading text-lg">&middot; BARBERSHOP</span>
+        </div>
+        <p class="text-gray-500 text-sm">&copy; 2026 Dr. Beard Barbershop. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MOBILE STICKY CTA ========== -->
+  <div id="mobile-cta" class="fixed bottom-0 left-0 right-0 z-40 p-3 bg-gradient-to-t from-black via-black/95 to-transparent md:hidden translate-y-full transition-transform duration-300">
+    <button onclick="BookingModal.open()" class="flex items-center justify-center gap-2 bg-accent hover:bg-accent-light text-black font-bold text-lg py-4 rounded-full w-full transition-colors cursor-pointer">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      Book Now
+    </button>
+  </div>
+
+  <!-- ========== NAV (appears on scroll) ========== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 -translate-y-full transition-transform duration-300">
+    <div class="bg-dark/90 backdrop-blur-lg border-b border-white/5">
+      <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+        <a href="#hero" class="font-heading text-xl text-white">DR. BEARD</a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
+          <a href="#gallery" class="text-sm text-gray-400 hover:text-white transition-colors">Gallery</a>
+          <a href="#shop" class="text-sm text-gray-400 hover:text-white transition-colors">The Shop</a>
+          <a href="#reviews" class="text-sm text-gray-400 hover:text-white transition-colors">Reviews</a>
+          <button onclick="BookingModal.open()" class="bg-accent hover:bg-accent-light text-black font-bold text-sm px-5 py-2 rounded-full transition-colors cursor-pointer">Book Now</button>
+        </div>
+        <button onclick="BookingModal.open()" class="md:hidden bg-accent hover:bg-accent-light text-black font-bold text-sm px-4 py-2 rounded-full transition-colors cursor-pointer">Book Now</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Booking Modal -->
+  <div id="booking-overlay" class="booking-overlay">
+    <div class="booking-modal">
+      <button class="booking-close" onclick="BookingModal.close()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+
+      <div class="booking-header">
+        <h2>BOOK YOUR APPOINTMENT</h2>
+        <p>Pick a date and time that works for you</p>
+      </div>
+
+      <div class="booking-body">
+        <div class="booking-steps-indicator">
+          <div class="step-dot active"></div>
+          <div class="step-dot"></div>
+          <div class="step-dot"></div>
+          <div class="step-dot"></div>
+        </div>
+
+        <!-- Step 1: Calendar -->
+        <div id="booking-step-1" class="booking-step active">
+          <div class="booking-calendar-header">
+            <button class="cal-nav" onclick="BookingModal.prevMonth()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <h3 id="calendar-month-label"></h3>
+            <button class="cal-nav" onclick="BookingModal.nextMonth()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div id="calendar-grid" class="booking-calendar"></div>
+        </div>
+
+        <!-- Step 2: Time Slots -->
+        <div id="booking-step-2" class="booking-step">
+          <div id="selected-date-label" class="selected-date-label"></div>
+          <div id="time-slots-grid" class="time-slots"></div>
+          <button class="booking-btn booking-btn-back" onclick="BookingModal.goTo(1)">← Change Date</button>
+        </div>
+
+        <!-- Step 3: Details Form -->
+        <div id="booking-step-3" class="booking-step">
+          <div style="text-align:center;margin-bottom:1.25rem;">
+            <span id="form-summary-date" style="color:#10b981;font-weight:600;"></span>
+            <span style="color:#666;"> at </span>
+            <span id="form-summary-time" style="color:#10b981;font-weight:600;"></span>
+          </div>
+          <div class="booking-form-group">
+            <label for="booking-name">Your Name</label>
+            <input type="text" id="booking-name" placeholder="John Smith" autocomplete="name">
+          </div>
+          <div class="booking-form-group">
+            <label for="booking-phone">Phone Number</label>
+            <input type="tel" id="booking-phone" placeholder="(555) 123-4567" autocomplete="tel">
+          </div>
+          <button id="booking-submit-btn" class="booking-btn booking-btn-primary" onclick="BookingModal.submitBooking()">Confirm Booking</button>
+          <button class="booking-btn booking-btn-back" onclick="BookingModal.goTo(2)">← Change Time</button>
+        </div>
+
+        <!-- Step 4: Confirmation -->
+        <div id="booking-step-4" class="booking-step">
+          <div class="booking-confirmed">
+            <div class="check-circle">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3>YOU'RE BOOKED!</h3>
+            <p>See you <span id="confirm-date" class="detail"></span></p>
+            <p>at <span id="confirm-time" class="detail"></span></p>
+            <p style="margin-top:0.5rem;color:#666;">— <span id="confirm-name"></span></p>
+            <button class="booking-btn booking-btn-primary" style="margin-top:1.5rem;" onclick="BookingModal.close()">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="booking.js"></script>
+</body>
+</html>

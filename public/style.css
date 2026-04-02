@@ -1,0 +1,192 @@
+/* ========== BASE ========== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #10b981;
+  color: #0a0a0a;
+}
+
+/* ========== HERO TITLE ========== */
+.hero-title {
+  background: linear-gradient(135deg, #ffffff 0%, #10b981 50%, #065f46 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s ease infinite;
+  text-shadow: none;
+  filter: drop-shadow(0 0 60px rgba(16, 185, 129, 0.15));
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ========== SCROLL ANIMATIONS ========== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.15s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(5) { transition-delay: 0.25s; }
+.animate-on-scroll:nth-child(6) { transition-delay: 0.3s; }
+
+/* ========== GALLERY / INSTAGRAM FEED ========== */
+.gallery-item {
+  position: relative;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+  border-radius: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* Instagram feed container */
+.ig-feed-container {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ig-feed-container iframe {
+  border: none;
+  border-radius: 1rem;
+}
+
+/* ========== LIGHTBOX ========== */
+#lightbox {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#lightbox-img {
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+#lightbox.active #lightbox-img {
+  transform: scale(1);
+}
+
+/* ========== REVIEWS CAROUSEL ========== */
+.reviews-track {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.reviews-slider {
+  animation: scrollReviews 45s linear infinite;
+  width: max-content;
+}
+
+.reviews-slider:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollReviews {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========== SERVICE CARDS ========== */
+.service-card {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ========== NAVBAR ========== */
+#navbar.visible {
+  transform: translateY(0);
+}
+
+/* ========== MOBILE CTA ========== */
+#mobile-cta.visible {
+  transform: translateY(0);
+}
+
+/* ========== SCROLL INDICATOR ========== */
+.scroll-indicator {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
+
+/* ========== REVIEW CARD HOVER ========== */
+.review-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* ========== RESPONSIVE TWEAKS ========== */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 4rem;
+    line-height: 0.95;
+  }
+}
+
+/* ========== GOOGLE MAPS IFRAME ========== */
+footer iframe {
+  filter: grayscale(0.8) invert(0.92) contrast(0.85);
+  border-radius: 1rem;
+}
+
+/* ========== BARBER POLE DIVIDER ========== */
+.barber-pole-divider {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #10b981 0px,
+    #10b981 20px,
+    #ffffff 20px,
+    #ffffff 40px,
+    #10b981 40px
+  );
+  opacity: 0.3;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Bookings Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💈</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+
+  <!-- Login Gate -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-icon">💈</div>
+      <h1>Admin Dashboard</h1>
+      <p>Enter your password to continue</p>
+      <form id="login-form" onsubmit="event.preventDefault(); AdminApp.login(event);">
+        <input type="password" id="login-password" placeholder="Password" autocomplete="current-password">
+        <button type="submit" class="login-btn">Enter</button>
+        <p id="login-error" class="login-error" style="display:none;">Wrong password</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="dashboard" style="display:none;">
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Header -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+        <h1>💈 Bookings Dashboard</h1>
+      </div>
+      <div class="dash-header-right">
+        <span class="live-indicator">
+          <span class="live-dot"></span> Live
+        </span>
+        <button onclick="AdminApp.logout()" class="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-today">0</div>
+        <div class="stat-label">Today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-tomorrow">0</div>
+        <div class="stat-label">Tomorrow</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-week">0</div>
+        <div class="stat-label">This Week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-next">—</div>
+        <div class="stat-label">Next Up</div>
+      </div>
+    </div>
+
+    <!-- Main Grid: Calendar + Day Detail -->
+    <div class="main-grid">
+      <!-- Calendar -->
+      <div class="calendar-panel">
+        <div class="calendar-header">
+          <h2 id="calendar-month-label"></h2>
+          <div class="calendar-nav">
+            <button class="cal-nav" onclick="AdminApp.prevMonth()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="cal-nav" onclick="AdminApp.nextMonth()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="month-grid" class="month-grid"></div>
+      </div>
+
+      <!-- Day Detail -->
+      <div class="day-panel">
+        <div class="day-panel-header">
+          <h3 id="day-panel-title">Today</h3>
+          <p id="day-panel-date"></p>
+        </div>
+        <div id="day-bookings-list">
+          <div class="loading">Loading...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

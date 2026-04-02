@@ -1,0 +1,27 @@
+{
+  "shopName": "Dr. Beard Barbershop",
+  "tagline": "Barbershop",
+  "location": "Allen Park, Michigan",
+  "phone": "+17347996171",
+  "phoneDisplay": "(734) 799-6171",
+  "address": "17029 Ecorse Rd",
+  "city": "Allen Park",
+  "state": "MI",
+  "zip": "48101",
+  "instagram": "dr.beard.barber.shop",
+  "instagramUrl": "https://www.instagram.com/dr.beard.barber.shop/",
+  "accentColor": "#10b981",
+  "accentColorLight": "#34d399",
+  "rating": "4.9",
+  "reviewCount": "111",
+  "slotDurationMinutes": 60,
+  "defaultHours": {
+    "monday": { "open": "09:00", "close": "20:00" },
+    "tuesday": { "open": "09:00", "close": "20:00" },
+    "wednesday": { "open": "09:00", "close": "20:00" },
+    "thursday": { "open": "09:00", "close": "20:00" },
+    "friday": { "open": "09:00", "close": "20:00" },
+    "saturday": { "open": "09:00", "close": "20:00" },
+    "sunday": { "open": "09:00", "close": "20:00" }
+  }
+}

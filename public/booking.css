@@ -1,0 +1,409 @@
+/* ========== BOOKING MODAL ========== */
+.booking-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.booking-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.booking-modal {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.booking-overlay.active .booking-modal {
+  transform: scale(1) translateY(0);
+}
+
+.booking-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #999;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 5;
+}
+
+.booking-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.booking-header {
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+}
+
+.booking-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin: 0;
+}
+
+.booking-header p {
+  color: #999;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.booking-body {
+  padding: 0 2rem 2rem;
+}
+
+/* Steps */
+.booking-step {
+  display: none;
+  animation: fadeInUp 0.3s ease;
+}
+
+.booking-step.active {
+  display: block;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Step indicator */
+.booking-steps-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s;
+}
+
+.step-dot.active {
+  background: #10b981;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.step-dot.done {
+  background: #10b981;
+}
+
+/* Calendar */
+.booking-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.booking-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.booking-calendar-header h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  color: #fff;
+  margin: 0;
+}
+
+.cal-nav {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.cal-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cal-day-label {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #666;
+  padding: 4px 0;
+  text-transform: uppercase;
+}
+
+.cal-day {
+  text-align: center;
+  padding: 10px 4px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #999;
+  cursor: default;
+  border: none;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.cal-day.available {
+  color: #fff;
+  cursor: pointer;
+}
+
+.cal-day.available:hover {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.cal-day.selected {
+  background: #10b981 !important;
+  color: #000 !important;
+  font-weight: 700;
+}
+
+.cal-day.today {
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.cal-day.past, .cal-day.empty {
+  color: #333;
+  cursor: default;
+}
+
+/* Time slots */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.time-slot {
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.time-slot:hover {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.time-slot.selected {
+  background: #10b981;
+  border-color: #10b981;
+  color: #000;
+  font-weight: 600;
+}
+
+.time-slot.unavailable {
+  color: #444;
+  border-color: rgba(255, 255, 255, 0.03);
+  background: transparent;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.time-slot.unavailable:hover {
+  border-color: rgba(255, 255, 255, 0.03);
+  background: transparent;
+}
+
+/* Form */
+.booking-form-group {
+  margin-bottom: 1rem;
+}
+
+.booking-form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.4rem;
+}
+
+.booking-form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.booking-form-group input:focus {
+  border-color: #10b981;
+}
+
+.booking-form-group input::placeholder {
+  color: #555;
+}
+
+/* Buttons */
+.booking-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  margin-top: 0.5rem;
+}
+
+.booking-btn-primary {
+  background: #10b981;
+  color: #000;
+}
+
+.booking-btn-primary:hover {
+  background: #34d399;
+  transform: translateY(-1px);
+}
+
+.booking-btn-primary:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.booking-btn-back {
+  background: rgba(255, 255, 255, 0.05);
+  color: #999;
+  margin-top: 0.5rem;
+}
+
+.booking-btn-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Confirmation */
+.booking-confirmed {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.booking-confirmed .check-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.booking-confirmed .check-circle svg {
+  width: 40px;
+  height: 40px;
+  color: #10b981;
+}
+
+.booking-confirmed h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.booking-confirmed p {
+  color: #999;
+  margin: 0.25rem 0;
+}
+
+.booking-confirmed .detail {
+  color: #fff;
+  font-weight: 600;
+}
+
+.booking-loading {
+  text-align: center;
+  padding: 2rem 0;
+  color: #999;
+}
+
+.booking-loading .spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #10b981;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.selected-date-label {
+  text-align: center;
+  color: #10b981;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Error toast */
+.booking-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  animation: fadeInUp 0.3s ease;
+}
