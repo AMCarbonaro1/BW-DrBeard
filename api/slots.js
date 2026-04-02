@@ -1,5 +1,15 @@
-import { kv } from '@vercel/kv';
-import config from '../config.json' assert { type: 'json' };
+import { createClient } from '@vercel/kv';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+const config = JSON.parse(readFileSync(join(process.cwd(), 'config.json'), 'utf8'));
+
+function getKV() {
+  return createClient({
+    url: process.env.KV_REST_API_URL,
+    token: process.env.KV_REST_API_TOKEN,
+  });
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -11,7 +21,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid date format. Use YYYY-MM-DD' });
   }
 
-  // Check if date is in the past
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const requestDate = new Date(date + 'T00:00:00');
@@ -19,7 +28,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Cannot book in the past' });
   }
 
-  // Get day of week
   const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   const dayName = days[requestDate.getDay()];
   const hours = config.defaultHours[dayName];
@@ -28,7 +36,6 @@ export default async function handler(req, res) {
     return res.json({ slots: [], closed: true });
   }
 
-  // Generate time slots
   const openHour = parseInt(hours.open.split(':')[0]);
   const openMin = parseInt(hours.open.split(':')[1]);
   const closeHour = parseInt(hours.close.split(':')[0]);
@@ -47,7 +54,7 @@ export default async function handler(req, res) {
     currentMin += duration;
   }
 
-  // Get existing bookings for this date
+  const kv = getKV();
   let bookings = [];
   try {
     bookings = (await kv.get(`bookings:${date}`)) || [];
@@ -57,7 +64,6 @@ export default async function handler(req, res) {
 
   const bookedTimes = new Set(bookings.map(b => b.time));
 
-  // If today, filter out past time slots
   const now = new Date();
   const isToday = date === now.toISOString().split('T')[0];
 

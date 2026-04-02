@@ -1,4 +1,11 @@
-import { kv } from '@vercel/kv';
+import { createClient } from '@vercel/kv';
+
+function getKV() {
+  return createClient({
+    url: process.env.KV_REST_API_URL,
+    token: process.env.KV_REST_API_TOKEN,
+  });
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -7,19 +14,16 @@ export default async function handler(req, res) {
 
   const { password, date } = req.query;
 
-  // Check admin password
   const adminPassword = process.env.ADMIN_PASSWORD;
   if (!adminPassword || password !== adminPassword) {
     return res.status(401).json({ error: 'Invalid password' });
   }
 
+  const kv = getKV();
+
   try {
     if (date === 'all') {
-      // Get all upcoming bookings (scan keys)
       const keys = [];
-      const today = new Date().toISOString().split('T')[0];
-      
-      // Scan for booking keys - check next 30 days
       for (let i = 0; i < 30; i++) {
         const d = new Date();
         d.setDate(d.getDate() + i);
@@ -43,9 +47,8 @@ export default async function handler(req, res) {
       return res.json({ bookings: allBookings });
     }
 
-    // Single date (default: today)
     const targetDate = date || new Date().toISOString().split('T')[0];
-    
+
     if (!/^\d{4}-\d{2}-\d{2}$/.test(targetDate)) {
       return res.status(400).json({ error: 'Invalid date format' });
     }

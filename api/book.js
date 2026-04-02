@@ -1,5 +1,15 @@
-import { kv } from '@vercel/kv';
-import config from '../config.json' assert { type: 'json' };
+import { createClient } from '@vercel/kv';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+const config = JSON.parse(readFileSync(join(process.cwd(), 'config.json'), 'utf8'));
+
+function getKV() {
+  return createClient({
+    url: process.env.KV_REST_API_URL,
+    token: process.env.KV_REST_API_TOKEN,
+  });
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -8,7 +18,6 @@ export default async function handler(req, res) {
 
   const { name, phone, date, time } = req.body || {};
 
-  // Validate fields
   if (!name || !phone || !date || !time) {
     return res.status(400).json({ error: 'Missing required fields: name, phone, date, time' });
   }
@@ -21,7 +30,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid time format. Use HH:MM' });
   }
 
-  // Check date is not in the past
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const bookingDate = new Date(date + 'T00:00:00');
@@ -29,7 +37,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Cannot book in the past' });
   }
 
-  // Check the day has hours
   const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   const dayName = days[bookingDate.getDay()];
   const hours = config.defaultHours[dayName];
@@ -37,7 +44,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Shop is closed on this day' });
   }
 
-  // Check time is within shop hours
   const [bookH, bookM] = time.split(':').map(Number);
   const [openH, openM] = hours.open.split(':').map(Number);
   const [closeH, closeM] = hours.close.split(':').map(Number);
@@ -50,7 +56,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Time is outside shop hours' });
   }
 
-  // Check slot is not already booked
+  const kv = getKV();
   let bookings = [];
   try {
     bookings = (await kv.get(`bookings:${date}`)) || [];
@@ -63,7 +69,6 @@ export default async function handler(req, res) {
     return res.status(409).json({ error: 'This time slot is already booked' });
   }
 
-  // Create booking
   const booking = {
     name: name.trim(),
     phone: phone.trim(),
