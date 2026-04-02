@@ -50,9 +50,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Time is outside shop hours' });
   }
 
+  const shopId = config.shopId || 'default';
   let bookings = [];
   try {
-    const shopId = config.shopId || 'default';
     bookings = (await redis.get(`${shopId}:bookings:${date}`)) || [];
   } catch (e) {
     console.error('Redis read error:', e);
