@@ -52,7 +52,8 @@ export default async function handler(req, res) {
 
   let bookings = [];
   try {
-    bookings = (await redis.get(`bookings:${date}`)) || [];
+    const shopId = config.shopId || 'default';
+    bookings = (await redis.get(`${shopId}:bookings:${date}`)) || [];
   } catch (e) {
     console.error('Redis read error:', e);
   }
@@ -73,7 +74,7 @@ export default async function handler(req, res) {
   bookings.push(booking);
 
   try {
-    await redis.set(`bookings:${date}`, bookings);
+    await redis.set(`${shopId}:bookings:${date}`, bookings);
   } catch (e) {
     console.error('Redis write error:', e);
     return res.status(500).json({ error: 'Failed to save booking' });

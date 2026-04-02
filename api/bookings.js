@@ -1,5 +1,8 @@
 import { Redis } from '@upstash/redis';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
+const config = JSON.parse(readFileSync(join(process.cwd(), 'config.json'), 'utf8'));
 const redis = Redis.fromEnv();
 
 export default async function handler(req, res) {
@@ -21,7 +24,7 @@ export default async function handler(req, res) {
         const d = new Date();
         d.setDate(d.getDate() + i);
         const dateStr = d.toISOString().split('T')[0];
-        keys.push(`bookings:${dateStr}`);
+        keys.push(`${config.shopId || 'default'}:bookings:${dateStr}`);
       }
 
       const allBookings = [];
@@ -46,7 +49,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid date format' });
     }
 
-    const bookings = (await redis.get(`bookings:${targetDate}`)) || [];
+    const shopId = config.shopId || 'default';
+    const bookings = (await redis.get(`${shopId}:bookings:${targetDate}`)) || [];
     bookings.sort((a, b) => a.time.localeCompare(b.time));
 
     res.json({ bookings, date: targetDate });

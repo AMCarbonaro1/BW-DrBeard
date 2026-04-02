@@ -50,7 +50,8 @@ export default async function handler(req, res) {
 
   let bookings = [];
   try {
-    bookings = (await redis.get(`bookings:${date}`)) || [];
+    const shopId = config.shopId || 'default';
+    bookings = (await redis.get(`${shopId}:bookings:${date}`)) || [];
   } catch (e) {
     console.error('Redis read error:', e);
   }
