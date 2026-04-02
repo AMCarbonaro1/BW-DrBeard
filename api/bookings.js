@@ -1,11 +1,6 @@
-import { createClient } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
-function getKV() {
-  return createClient({
-    url: process.env.KV_REST_API_URL,
-    token: process.env.KV_REST_API_TOKEN,
-  });
-}
+const redis = Redis.fromEnv();
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -19,8 +14,6 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'Invalid password' });
   }
 
-  const kv = getKV();
-
   try {
     if (date === 'all') {
       const keys = [];
@@ -33,7 +26,7 @@ export default async function handler(req, res) {
 
       const allBookings = [];
       for (const key of keys) {
-        const dayBookings = await kv.get(key);
+        const dayBookings = await redis.get(key);
         if (dayBookings && dayBookings.length > 0) {
           allBookings.push(...dayBookings);
         }
@@ -53,12 +46,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid date format' });
     }
 
-    const bookings = (await kv.get(`bookings:${targetDate}`)) || [];
+    const bookings = (await redis.get(`bookings:${targetDate}`)) || [];
     bookings.sort((a, b) => a.time.localeCompare(b.time));
 
     res.json({ bookings, date: targetDate });
   } catch (e) {
-    console.error('KV error:', e);
+    console.error('Redis error:', e);
     res.status(500).json({ error: 'Failed to fetch bookings' });
   }
 }

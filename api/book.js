@@ -1,15 +1,9 @@
-import { createClient } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
 const config = JSON.parse(readFileSync(join(process.cwd(), 'config.json'), 'utf8'));
-
-function getKV() {
-  return createClient({
-    url: process.env.KV_REST_API_URL,
-    token: process.env.KV_REST_API_TOKEN,
-  });
-}
+const redis = Redis.fromEnv();
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -56,12 +50,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Time is outside shop hours' });
   }
 
-  const kv = getKV();
   let bookings = [];
   try {
-    bookings = (await kv.get(`bookings:${date}`)) || [];
+    bookings = (await redis.get(`bookings:${date}`)) || [];
   } catch (e) {
-    console.error('KV read error:', e);
+    console.error('Redis read error:', e);
   }
 
   const alreadyBooked = bookings.some(b => b.time === time);
@@ -80,9 +73,9 @@ export default async function handler(req, res) {
   bookings.push(booking);
 
   try {
-    await kv.set(`bookings:${date}`, bookings);
+    await redis.set(`bookings:${date}`, bookings);
   } catch (e) {
-    console.error('KV write error:', e);
+    console.error('Redis write error:', e);
     return res.status(500).json({ error: 'Failed to save booking' });
   }
 
